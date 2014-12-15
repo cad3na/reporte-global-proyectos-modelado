@@ -1,0 +1,11 @@
+Benford's Law, also called the First Digit Law refers to the frequency distribution of digits from a data source.  The first observation was made by Benford \cite{Benford38} who looked through various sources of data and found that in some data sets the number 1 repeated about 30\% of the time, while larger digits occur less frequently. \\
+
+ Benford's Law is the probability distribution for the mantissa with respect to base $b \in \mathbb{N}$ \ {1} given by $\mathbb{P}(\text{mantissa}_b \leq t)=\log_b t \forall t \in [1,b]$ ; the special case dealt with in this document is that described by:\\
+\begin{align*}
+\mathbb{P}(\text{first significant digit}_{10} = d) = \log_{10}(1+\frac{1}{d})\text{,   }d=1,...,9
+\end{align*}
+
+
+Today, this distribution is used in accounting fraud detection\cite{Nigrini97}, Election data and Genome data. Also, a relation between the brain electrical activity and Benford's Law was encountered, and the researches noted that compliance with Benford's Law is influenced by the presence of the anesthesic sevoflurane, or destroyed by noise in the EEG\cite{Kreuzer14}.
+
+We give two examples where Benford's Law holds: the well known Fibonacci sequence, and population data from Mexico's Municipalities, obtained from INEGI.

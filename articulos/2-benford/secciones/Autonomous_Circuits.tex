@@ -1,0 +1,19 @@
+An Autonomous Circuit is a circuit that produces a time-varying output without having a time-varying input\cite{Kennedy95}. More formally:\\
+
+An electronic circuit is described by a system of ordinary differential equations of the form:
+\begin{equation*}
+\dot{\mathbf{X}}(t)=\mathbf{F}(\mathbf{X}(t),t)
+\end{equation*}
+Where $\mathbf{X}(t)=(X_1(t),X_2(t),...,X_n(t))^T \in \mathbb{R}$ is called the \emph{state vector} and $\mathbf{F}$ is called the \emph{vector field}. $\dot{\mathbf{X}(t)}$ denotes the derivative of $\mathbf{X}(t)$ with respect to time.
+
+If the vector field $\mathbf{F}$ depends explicitly on $t$, then the system is said to be \emph{non-autonomous}. If the vector field depends only on the state and is \emph{independent} of time $t$, then the system is said to be \emph{autonomous} and may be written in the simpler form:\\
+\begin{equation}\dot{\mathbf{X}}=\mathbf{F}(\mathbf{X})\end{equation}
+
+
+The time evolution of the state of an autonomous electronic circuit from an initial point $\dot{\mathbf{X}}$ at $t$=0 is given by\\
+
+\begin{align*}\phi(\mathbf{X_0})=\mathbf{X_0}+\int_o^t\mathbf{F}(\mathbf{X}(\tau))d\tau &, t \in \mathbb{R}_+\end{align*}
+
+The solution $\phi(\mathbf{X_0})$ is called a \emph{trajectory} through $\mathbf{X_0}$, and the set ${\phi(\mathbf{X_0}),t \in \mathbb{R}_+}$ is an \emph{orbit} of the system (1.1). The collection of maps ${\phi_t}$ that describe the evolution of the entire state space with time is called the \emph{flow}.
+
+An autonomous electronic circuit is an example of a \emph{deterministic dynamical system}.

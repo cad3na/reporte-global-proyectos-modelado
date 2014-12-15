@@ -1,0 +1,1484 @@
+
+% \documentclass{article}
+% \usepackage{amsfonts}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=5.50.0.2953}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{Created=Sunday, December 14, 2014 13:08:08}
+%TCIDATA{LastRevised=Sunday, December 14, 2014 18:02:07}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="DocumentShell" CONTENT="Scientific Notebook\Blank Document">}
+%TCIDATA{CSTFile=Math with theorems suppressed.cst}
+%TCIDATA{PageSetup=72,72,72,72,0}
+%TCIDATA{AllPages=
+%F=36,\PARA{038<p type="texpara" tag="Body Text" >\hfill \thepage}
+%}
+
+
+% \newtheorem{theorem}{Theorem}
+% \newtheorem{acknowledgement}[theorem]{Acknowledgement}
+% \newtheorem{algorithm}[theorem]{Algorithm}
+% \newtheorem{axiom}[theorem]{Axiom}
+% \newtheorem{case}[theorem]{Case}
+% \newtheorem{claim}[theorem]{Claim}
+% \newtheorem{conclusion}[theorem]{Conclusion}
+% \newtheorem{condition}[theorem]{Condition}
+% \newtheorem{conjecture}[theorem]{Conjecture}
+% \newtheorem{corollary}[theorem]{Corollary}
+% \newtheorem{criterion}[theorem]{Criterion}
+% \newtheorem{definition}[theorem]{Definition}
+% \newtheorem{example}[theorem]{Example}
+% \newtheorem{exercise}[theorem]{Exercise}
+% \newtheorem{lemma}[theorem]{Lemma}
+% \newtheorem{notation}[theorem]{Notation}
+% \newtheorem{problem}[theorem]{Problem}
+% \newtheorem{proposition}[theorem]{Proposition}
+% \newtheorem{remark}[theorem]{Remark}
+% \newtheorem{solution}[theorem]{Solution}
+% \newtheorem{summary}[theorem]{Summary}
+% \newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+% \input{tcilatex}
+%
+% \begin{document}
+
+
+\begin{center}
+CENTRO DE INVESTIGACIONES AVANZADAS DEL INSTITUTO POLIT\'{E}CNICO NACIONAL
+
+DEPARTAMENTO DE CONTROL AUTOM\'{A}TICO
+
+MAESTR\'{I}A EN CIENCIAS EN CONTROL AUTOM\'{A}TICO
+
+REPORTE FINAL DE PROYECTO
+
+\textbf{INTERACCI\'{O}N ENTRE EL BIENESTAR PSICOL\'{O}GICO Y EL PAISAJE
+SONORO.}
+
+ING. CONCEPCI\'{O}N JAZM\'{I}N SU\'{A}REZ POLO
+
+ING. MILCOM ELIJACK PEREGRINA OCHOA
+
+ASESOR: DR. JUAN CARLOS MART\'{I}NEZ GARC\'{I}A
+
+\bigskip
+
+DICIEMBRE 2014
+
+\bigskip
+\end{center}
+
+\textbf{Indice general. }
+
+Resumen \qquad 2
+
+Abstract\qquad 2
+
+1. Introducci\'{o}n\qquad 2
+
+2. Cronograma\qquad 3
+
+3. Estado del arte\qquad 3
+
+3.1 Surgimiento y desarrollo del concepto de paisaje sonoro.\qquad 3
+
+3.2 Caracter\'{\i}sticas del paisaje sonoro.\qquad 3
+
+3.3 An\'{a}lisis del paisaje sonoro.\qquad 4
+
+3.4 Estructura del paisaje sonoro.\qquad 5
+
+3.5 Caracter\'{\i}sticas estructurales para el an\'{a}lisis de paisajes
+sonoros.\qquad 5
+
+4. Entrevista.\qquad 6
+
+5. Parte Experimental.\qquad 8
+
+5.1 Equipo de grabaci\'{o}n.\qquad 8
+
+5.2 Grabaci\'{o}n de campo.\qquad 9
+
+5.2.1 Paisaje sonoro natural y paisaje sonoro con elemento humano.\qquad 9
+
+5.2.2 Paisaje sonoro urbano.\qquad 10
+
+5.3 Edici\'{o}n y an\'{a}lisis de las grabaciones.\qquad 10
+
+6. Dise\~{n}o de la Red Perceptr\'{o}n Multicapa con algoritmo
+
+supervisado Backpropagation tipo gradiente.\qquad 12
+
+6.1 Acondicionamiento de datos.\qquad 17
+
+6.2 Entrenamiento de la red neuronal.\qquad 18
+
+6.3 Modo de operaci\'{o}n de la aplicaci\'{o}n.\qquad 23
+
+Conclusiones.\qquad 24
+
+Referencias.\qquad 24
+
+Bibliograf\'{\i}a consultada.\qquad 24
+
+\textbf{\'{I}ndice de figuras y tablas}
+
+Figura 1. Grabadora Tascam DR40\qquad 8
+
+Figura 2. Aud\'{\i}fonos Sennheiser hd 205\qquad 8
+
+Figura 3. Grabadora Tascam DR40 montada en tr\'{\i}pode y con
+antiviento\qquad 9
+
+Figura 4. Espectrograma antes y despu\'{e}s de correcciones\qquad 11
+
+Figura 5. An\'{a}lisis de espectro en frecuencia paisaje natural, natural
+con\qquad 12
+
+elemento humano y urbano respectivamente\qquad 12
+
+Figura 6. Datos del espectrograma.\qquad 12
+
+Figura 7. Representaci\'{o}n de una Neurona\qquad 14
+
+Figura 8. Funci\'{o}n sigmoidea\qquad 15
+
+Figura 9. Espectro analizado por Audacity\qquad 18
+
+Figura 10. Organizaci\'{o}n de los datos en hojas de c\'{a}lculo\qquad 18
+
+Figura 11. Gr\'{a}fica en Matlab de los datos de entrenamiento\qquad 19
+
+Figura 12. Patrones de entrenamiento\qquad 19
+
+Figura 13. Hipermatriz de capas de la red neuronal\qquad 13
+
+Figura 14. Matriz de Bias de la red neuronal\qquad 20
+
+Figura 15. Resultado para 500 \'{e}pocas\qquad 21
+
+Figura 16. Resultado para 600 \'{e}pocas\qquad 21
+
+Figura 17. Resultado para 800 \'{e}pocas\qquad 22
+
+Figura 18. Aplicaci\'{o}n standalone\qquad 23
+
+Tabla 1. Cronograma de actividades.\qquad 3
+
+Tabla 2. Rangos de sonido de la OMS\qquad 22
+
+\textbf{Resumen }
+
+En el presente Proyecto, se realizar\'{o}n grabaciones de campo en tres
+entornos sonoros distintos, catalogados como paisaje sonoro natural, natural
+con elemento humano y urbano. A partir de las grabaciones se procedi\'{o} a
+un tratamiento digital de la se\~{n}ales, los datos obtenidos se utilizaron
+como referentes para el correspondiente entrenamiento de una red neuronal
+basada en el modelo de Retro-propagaci\'{o}n que realiza una m\'{e}trica
+espacial y temporal de la calidad de un paisaje sonoro, adem\'{a}s de
+obtenerse la flexibilidad de caracterizar aquellos paisajes sonoros nocivos
+y su relaci\'{o}n con el malestar psicol\'{o}gico.
+
+\textbf{Abstract }
+
+In the current project, field recordings were performed in three different
+sound environments, categorized as natural soundscape, natural soundscape
+with human element and urban soundscape. From the recordings we proceeded to
+a digital processing of signals, data obtained were used as references for
+the corresponding back propagation neural network training, which performs a
+spatial and temporal soundscape quality metric, plus we obtained the
+flexibility to characterize harmful soundscapes and its relationship to
+psychological distress.
+
+\textbf{1. Introducci\'{o}n}
+
+Contrariamente a nuestra percepci\'{o}n visual, no podemos renunciar al
+sentido del o\'{\i}do, carecemos de \textquotedblleft parpados
+auditivos\textquotedblright . Nuestra escucha es adem\'{a}s
+\textquotedblleft omnidireccional\textquotedblright , consciente o
+inconscientemente, la escucha constituye a menudo nuestro primer
+acercamiento y modo de comprensi\'{o}n del entorno. Principlamente nos
+servimos de ella como de un \textquotedblleft radar\textquotedblright\ que
+nos informa de cuanto nos rodea y que nos indica en que hemos de fijar
+nuestra atenci\'{o}n, al tiempo que nos permite descartar muchas otras
+fuentes de informaci\'{o}n [1].
+
+Los sonidos que se escuchan hoy en d\'{\i}a en cualquier ciudad son muy
+distintos de aquellos que pod\'{\i}an escucharse haces algunos a\~{n}os,
+todo ellos debido al r\'{\i}tmico cambio mayormente acentuado a partir de la
+Revoluci\'{o}n Industrial. Muchos de los sonidos naturales del propio
+entorno se han visto opacados o desaparecidos del paisaje sonoro actual, la
+respuesta de los habitantes de un espacio con contaminaci\'{o}n ac\'{u}stica
+se traduce en malestares psicol\'{o}gicos entre otras cosas. Hoy en d\'{\i}a
+con el desarrollo de la ciencia y tecnolog\'{\i}a es posible explorar,
+estudiar y disfrutar los sonidos de estos tiempos, as\'{\i} como
+herramientas para el an\'{a}lisis de un paisaje sonoro partiendo de su
+descomposici\'{o}n en elementos. Y es justamente esta caracter\'{\i}stica la
+que nos permite desarrollar herramental para describir interacciones y
+mejorar la calidad ac\'{u}stica del ambiente.
+
+\textbf{2. Cronograma.}
+
+$%
+\begin{array}{cc}
+\text{\textbf{Semana}} & \text{\textbf{Actividades}} \\
+\text{1} & \text{Entrevistas} \\
+\text{2} & \text{Elecci\'{o}n de lugares y objetos agrabar} \\
+\text{3} & \text{Gesti\'{o}n de permisos de grabaci\'{o}n} \\
+\text{4} & \text{Grabaciones en campo } \\
+\text{5} & \text{Grabaciones en campo} \\
+\text{6} & \text{Edici\'{o}n de los archivos y an\'{a}lisis en el dominio de
+la frecuencia} \\
+\text{7} & \text{Extracci\'{o}n de los elementos caracter\'{\i}sticos} \\
+\text{8} & \text{Dise\~{n}o de una red neuronal artificial por algoritmo de
+retropropagaci\'{o}n} \\
+\text{9} & \text{Entrenamiento de la red neuronal} \\
+\text{10} & \text{Construcci\'{o}n de paisajes sonoros} \\
+\text{11} & \text{Construcci\'{o}n de aplicaci\'{o}n}%
+\end{array}%
+$
+
+Tabla 1. Cronograma de actividades.
+
+\textbf{3. Estado del arte}
+
+\textbf{\qquad 3.1 Surgimiento y desarrollo del concepto de paisaje sonoro.}
+
+El t\'{e}rmino paisaje sonoro deriva de paisaje terrestre [N. del T.: en ingl%
+\'{e}s "soundscape" deriva de "landscape"]. El paisaje sonoro hace
+referencia a cualquier ambiente ac\'{u}stico, ya sea natural, urbano, o
+rural, que este formado por tres componentes: la biofon\'{\i}a: sonidos biol%
+\'{o}gicos no humanos que se producen en una ambiente dado, la geofon\'{\i}%
+a: sonidos ni humanos ni biol\'{o}gicos, como el efecto del viento, el agua
+o el clima, y la antrofon\'{\i}a: el ruido que produce el ser humano por
+cualquier medio [5]. Por lo tanto, el medio ambiente sonoro (o paisaje
+sonoro), que es la suma de la totalidad de sonidos dentro de un \'{a}rea
+definida, es un reflejo \'{\i}ntimo de -entre otros- las condiciones
+sociales, pol\'{\i}ticas, tecnol\'{o}gicas y naturales del \'{a}rea. Cambios
+en las mencionadas condiciones implican cambios en el medio ambiente sonoro
+[4].
+
+El compositor canadiense R. Murray Schafer us\'{o} los t\'{e}rminos paisaje
+sonoro ("soundscape") y ecolog\'{\i}a ac\'{u}stica para describir cr\'{\i}%
+ticamente nuestro medio ambiente como un campo humano-ecol\'{o}gico ubicado
+entre "el sonido y el ruido". A partir de all\'{\i} desarroll\'{o} la idea
+de una disciplina futurista, con claras influencias de la bauhaus$^{1}$, el
+dise\~{n}o ac\'{u}stico. Su idea era juntar compositores contempor\'{a}neos
+con arquitectos, dise\~{n}adores de productos e ingenieros a fin de
+desarrollar sonidos para los innumerables objetos de nuestra vida cotidiana
+[6].
+
+Por su parte el compositor Barry Truax diferencia lo que es un medio
+ambiente s\'{o}nico de un paisaje sonoro. Para el, el primero comprende toda
+la energ\'{\i}a ac\'{u}stica en un contexto dado, mientras que el segundo es
+la comprensi\'{o}n de ese medio ambiente s\'{o}nico para aquellos que viven
+en \'{e}l y lo est\'{a}n creando continuamente.$^{2}$ Para Truax, la audici%
+\'{o}n es algo fundamental, ya que constituye la interface entre el
+individuo y el medio ambiente, por lo tanto el paisaje sonoro es el sistema
+resultante de la suma de estos dos componentes. Para Abraham Moles el
+paisaje sonoro es una secuencia corta de entre 4 y 8 segundos que incluye
+una idea compuesta por uno o varios signos que nos describen algo que est%
+\'{a} sucediendo (ideoscena).
+
+\textbf{\qquad 3.2 Caracter\'{\i}sticas del paisaje sonoro.}
+
+\textquotedblleft La vida cotidiana tiene una banda sonora. Si no la
+escuchamos, es porque ya estamos acostumbrados a o\'{\i}rla.%
+\textquotedblright , nos dice el music\'{o}logo Ram\'{o}n Pelinski.
+
+Existen una multitud de sonidos a nuestro alrededor, sonidos propios de la
+naturaleza y aquellos generados cotidianamente en cada uno de nuestros
+quehaceres. Sin embargo pocos son los que realmente escuchan estos sonidos,
+estos paisajes que describen el lugar en el que vivimos y el entorno en el
+que nos movemos [7].
+
+De acuerdo con Schafer, las cualidades de un paisaje sonoro son:
+\textquotedblleft sonidos t\'{o}nicos\textquotedblright\ (keynote sounds),
+un conjunto de rasgos de identidad constituido por cuanto o\'{\i}mos de
+forma distra\'{\i}da, sin atenci\'{o}n particular pues forman un continuo,
+un fondo sonoro al que estamos plenamente habituados, $^{4}$
+\textquotedblleft sonidos se\~{n}ales\textquotedblright , los sonidos que
+existen en un primer plano y que son escuchados de manera consciente. Son m%
+\'{a}s que figuras de fondo y la mayor\'{\i}a de veces representan c\'{o}%
+digos; \textquotedblleft sonidos importantes\textquotedblright\
+(soundmarks), esto es, los sonidos que los individuos identifican como
+sonidos claves de su comunidad. Murray habla tambi\'{e}n de sonidos que se
+manifiestan como terreno (ground), que interpreto como sonidos fondo
+(background), y de figuras que se manifiestan en un primer plano
+(foreground),$^{5}$, as\'{\i} como de un tercer nivel llamado campo (field),
+que es el lugar desde el cual se escucha el paisaje sonoro.
+
+En cuanto a paisajes sonoros urbanos tomaremos la definici\'{o}n de Ricardo
+Atienza, de acuerdo con \'{e}l, cada espacio urbano posee unos rasgos
+sonoros caracter\'{\i}sticos que nos comunican de sus cualidades espaciales,
+de las temporalidades y de los usos que lo habitan. Tales rasgos constituyen
+su identidad ordinaria, cotidiana. El continuo sonoro de las ciudades no es
+un \textquotedblleft ruido\textquotedblright\ neutro y arbitrario; el
+estudio de sus atributos compositivos constituye un an\'{a}lisis cualitativo
+de las diferentes configuraciones urbanas [1].
+
+No podemos comprender la identidad de un lugar sin conocer primero de que
+modo es habitado, recorrido y practicado un espacio. An\'{a}logamente, la
+identidad de cada persona estar\'{a} vinculada en gran medida a los espacios
+que habite. Esta doble interacci\'{o}n nos permite comprender la identidad
+de un lugar como la expresi\'{o}n cualitativa de un espacio a trav\'{e}s de
+sus modos de vida caracter\'{\i}sticos. Podriamos decir entonces que, todo
+fen\'{o}meno de identidad no es sino el resultado de la tensi\'{o}n que se
+establece entre una memoria sonora y una escucha futura o proyectada o bien
+tratarse de un proceso din\'{a}mico tanto en las periodicidades c\'{\i}%
+clicas de cada d\'{\i}a o de cada estaci\'{o}n, como en la progresiva evoluci%
+\'{o}n social y espacial de un lugar [1].
+
+\textbf{\qquad 3.3 An\'{a}lisis del paisaje sonoro.}
+
+Murray Schafer propone varios par\'{a}metros para el an\'{a}lisis de objetos
+sonoros que forman parte de los paisajes sonoros:
+
+1. Escuchado con claridad; claridad moderada; poca claridad; sobre el
+ambiente general.
+
+2. Ocurrencia aislada; repetida; parte de un contexto m\'{a}s grande o
+mensaje.
+
+3. Factores de medioambiente: sin reverberaci\'{o}n, poca reverberaci\'{o}n,
+larga reverberaci\'{o}n, eco, flujo, desplazamiento.
+
+A su vez Abraham Moles propone otros rasgos significativos del medio
+ambiente sonoro, de los cuales algunos de los m\'{a}s relevantes para este
+proyecto son los siguientes:
+
+1. Numero relativo de elementos. Densidad global de los acontecimientos.
+
+2. Complejidad del conjunto de los elementos: n\'{u}mero y variedad de las
+relaciones.
+
+3. Relaci\'{o}n entre la masa de los elementos \textquotedblleft
+cercanos\textquotedblright\ y la de los elementos \textquotedblleft
+lejanos\textquotedblright\ (noci\'{o}n de \textquotedblleft primer
+plano\textquotedblright).$^{6}$
+
+El artista sonoro e investigador Manuel Rocha Iturbide, en su articulo
+\textquotedblleft Estructura y percepci\'{o}n psicoac\'{u}stica del paisaje
+sonoro electroac\'{u}stico\textquotedblright\ a\~{n}ade dos aspectos m\'{a}s
+que no fueron abordados por Schafer y Moles, estos son:
+
+1. La escucha lineal en oposici\'{o}n a la escucha no lineal de un paisaje
+sonoro determinado. Por el termino lineal se refiere a una escucha en la que
+no podemos concentrarnos y seguir \qquad\ \ el transcurso de los eventos, y
+por no lineal, a una escucha en la que nuestra atenci\'{o}n va
+constantemente de un lugar a otro, sin permitirnos asimilar o percibir
+continuidad.
+
+2. El car\'{a}cter continuo o discontinuo en la estructura del paisaje
+sonoro. Puede haber paisajes sonoros esencialmente continuos pero con
+elementos discontinuos, o viceversa.
+
+\textbf{\qquad 3.4 Estructura del paisaje sonoro.}
+
+Schafer define dos caracter\'{\i}sticas importantes para el an\'{a}lisis de
+paisajes sonoros, los paisajes sonoros Hi-Fi y Low-Fi. En los primeros,
+\textquotedblleft los sonidos se sobreponen menos frecuentemente, hay
+perspectiva (amplitud de fondo)\textquotedblright\ $^{7}$. Estos paisajes se
+manifiestan m\'{a}s en el campo que en la ciudad. En los segundos, Lo-Fi,
+los distintos planos se empastan unos con otros, y es muy dif\'{\i}cil
+discernir figuras o fondos claros. Estos paisajes son t\'{\i}picos de las
+grandes urbes debidas sobre todo al ruido del tr\'{a}fico en las calles,
+perif\'{e}ricas y carreteras.$^{8}$
+
+Otros dos t\'{e}rminos que usa Schafer son gesto y textura. El primero se
+refiere a una figura que constituye un \'{u}nico y distinguible evento, y el
+segundo a un agregado, el efecto de manchas de imprecisi\'{o}n an\'{a}rquica
+y de acciones conflictivas. En cuanto a la textura, Schafer realiza la
+siguiente clasificaci\'{o}n: textura del medio ambiente escuchado: hi-fi,
+low-fi, natural, humano y tecnol\'{o}gico. Por su parte, Truax habla tambi%
+\'{e}n de la densidad como un posible par\'{a}metro descriptivo.
+
+\textbf{\qquad 3.5 Caracter\'{\i}sticas estructurales para el an\'{a}lisis
+de paisajes sonoros. }
+
+El investigador Manuel Rocha en su mismo articulo identifica cuatro tipos de
+paisajes sonoros, para este proyecto de investigaci\'{o}n unicamente se
+utilizo \textit{paisajes sonoros naturales}, \textit{paisajes sonoros
+naturales con elemento humano} y \textit{paisajes sonoros urbano}s para
+clasificar los entornos sonoros de estudio.
+
+El paisaje sonoro natural corresponde a un entorno donde principalmente se
+detecta sonidos del agua, del viento, sinfon\'{\i}as pajariles, sonidos de
+insectos, etc. El paisaje sonoro natural con elemento humano, el cual se
+utilizo en el proyecto para clasificar espacios naturales en los que adem%
+\'{a}s de los sonidos propios de un paisaje natural podemos encontrarnos con
+sonidos de caracter discontinuo propios de la intervenci\'{o}n del humano. \
+El paisaje sonoro urbanos presenta una mayor riqueza de fuentes sonoras
+respecto a los anteriores pues en el podemos encontrar diferentes sonidos,
+ya sean humanos (voces, pasos, etc.), mec\'{a}nicos (tr\'{a}fico vehicular, m%
+\'{a}quinas, etc.) en incluso sonidos naturales (p\'{a}jaros, fuentes de
+agua, etc.), los cuales contribuyen a la diferenciaci\'{o}n de m\'{u}ltiples
+paisajes sonoros urbanos, los cuales coexisten y, en m\'{u}ltiples casos, se
+combinan dentro la aglomeraci\'{o}n urbana.
+
+Importante mencionar que de acuerdo con el investigador \ Manuel Rocha, el
+tiempo m\'{\i}nimo para poder comprender la estructura de un paisaje sonoro,
+as\'{\i} como para analizar su complejidad, es de unos 40 segundos. La decisi%
+\'{o}n respecto a caminar y como girar el campo est\'{e}reo de los micr\'{o}%
+fonos durante el proceso de grabaci\'{o}n, son decisiones de car\'{a}cter
+estructural y de composici\'{o}n activa consciente.
+
+\textbf{4. Entrevista.}
+
+La presente entrevista se realiz\'{o} al experto en paisaje sonoro, grabaci%
+\'{o}n de campo y experimentaci\'{o}n sonora Enrique Maraver Aguirre.
+
+\textbf{1. Comentenos un poco sobre usted. }
+
+- \textit{Mi nombre es Enrique Maraver Aguirre, nacido en el Distrito
+Federal. Egresado del Instituto Politecnico Nacional como Ingeniero Quimico
+Industrial, posteriormente me involucre en la cuesti\'{o}n del sonido hace
+casi 10 a\~{n}os. Empec\'{e} la produccion de trabajos artisticos hace
+aproximadamente 7 a\~{n}os he publicado en distintos sellos en Portugal,
+Londres, Espa\~{n}a, Colombia, M\'{e}xico, etc. He dado algunos talleres
+sobre paisajes sonoros y ecologia acustica en Espa\~{n}a y en M\'{e}xico.
+Entre mis proyectos se encuentran las producciones en grabaci\'{o}n de
+campo, algunos proyectos de experimentaci\'{o}n sonora partiendo de la
+naturalidad del sonido como una fuente de creaci\'{o}n m\'{a}s all\'{a}
+artistica sobre todo como un medio de sensibilizaci\'{o}n de la escucha y de
+incitar a la gente de que nuestro sentido auditivo es igual de importante
+que los dem\'{a}s y que esto conlleva a una cuesti\'{o}n de sensibilidad y
+de conciencia.-}
+
+\textbf{2. Comentenos sobre su experiencia en la grabaci\'{o}n de paisajes
+sonoros.}
+
+- \textit{He trabajado con 3 equipos para la grabaci\'{o}n de campo que es
+Tascam, Zoom y Roland. Actualmente trabajo con Zoom y Tascam, a menudo he
+trabajado m\'{a}s con Tascam; la DR40 es muy vers\'{a}til, c\'{o}moda y pr%
+\'{a}ctica, tiene la modalidad de grabar en mono, calidad dual y cuatro
+canales.-}
+
+\textbf{a) \textquestiondown Qu\'{e} t\'{e}cnicas de grabaci\'{o}n utiliza
+con este equipo? }
+
+\textit{- Con la cuesti\'{o}n interna del grabador es en modalidad d\'{u}o o
+cuatro canales, la t\'{e}cnica m\'{a}s bien la uso en el entorno como la
+direcci\'{o}n del equipo, la modulaci\'{o}n de la entrada del audio, una t%
+\'{e}cnica especifica con el grabador no hay me gusta explorar a veces lo
+que el mismo grabador interactuar con distintos niveles de decibeles, tipos
+de direcciones generalmente con la configuraci\'{o}n X-Y, la A-B es m\'{a}s
+ruidosa.-}
+
+\textbf{b) \textquestiondown Radio m\'{a}ximo de detecci\'{o}n de sonidos?}
+
+\textit{-Depende de la entrada de audio, trae una modulaci\'{o}n de entrada
+de audio que va desde 100 hasta 0. Depende del entorno en el que te
+encuentres, por ejemplo si quieres capturar una fuente que est\'{e}s a menos
+de un metro o dos vas modulando la entrada de audio a un porcentaje de 30\%
+aproximadamente si quieres capturar un sonido en un radio de 20m modulas a
+una cuesti\'{o}n de 50\%-60\% . Yo no lo uso a m\'{a}s del 50\% porque la
+calidad de la grabaci\'{o}n se hace m\'{a}s \'{a}spera empieza a capturar
+todo lo que pase y se saturan los micr\'{o}fonos. Lo que hace dif\'{\i}cil
+percibir y editar al mismo tiempo. Es muy importante realizar pruebas de
+escucha independientemente de la modulaci\'{o}n y configuraci\'{o}n deseada,
+esto es experimentar esta cuesti\'{o}n de espacio si es necesario
+desplazarse para capturar los sonidos que se requieran.-}
+
+\textbf{c. \textquestiondown C\'{o}mo realiza la selecci\'{o}n de puntos ac%
+\'{u}sticos? }
+
+\textit{- Hay una teor\'{\i}a en la cual est\'{a} plasmada por Murray
+Schafer, Barry Truax, la escuela actual de Chris Watson en Londres. Cada uno
+en esta cuesti\'{o}n es muy amplio desde un entorno natural, urbano, esto va
+dependiendo de lo que uno quiera analizar. Las iniciativas que uso son
+normalmente son m\'{a}s propias.-- }
+
+\textbf{3. \textquestiondown Cu\'{a}les son las consideraciones t\'{e}cnicas
+a la hora de realizar las grabaciones de audio? }
+
+\qquad \textit{- Normalmente la mejor calidad de grabaci\'{o}n es en formato
+WAV, el Tascam DR40 trae la modalidad de grabar en MP3 y WAV. Para m\'{\i}
+el mejor registro que puedes hacer con este grabador es en formato WAV a
+48.1 kHz. Esto se recomienda como m\'{\i}nimo en calidad, normalmente
+realizo las grabaciones arriba de 24 bits.- }
+
+\textit{- Del montaje de la grabadora depende mucho un paisaje sonoro bien o
+mal capturado o m\'{a}s all\'{a} de un paisaje sonoro una buena o mala
+grabaci\'{o}n. Evidentemente hay que tener un soporte para evitar deteriorar
+una continuidad en el paisaje tan solo con tocar la misma grabadora, lo cual
+conlleva editarlo lo cual no indica que pierda la naturalidad pero te
+conlleva a hacer ajustes que pueden causarte inconvenientes. Utilizar tambi%
+\'{e}n un cubre polvos que ayuda a que no se da\~{n}en los micros internos
+del grabador as\'{\i} como protegerlos del viento para evitar que la entrada
+de audio se sature de informaci\'{o}n.-}
+
+\qquad \textit{- Para investigaci\'{o}n sugiero grabaciones tomas en
+distintos tiempos, en cuesti\'{o}n de tiempo no hay una exactitud depende
+del punto que uno quiera capturar.-}
+
+\textbf{4. Comentenos sobre la estructuraci\'{o}n del paisaje sonoro.}
+
+\textit{- Trato de editar lo menos posible mis grabaciones, lo \'{u}nico que
+generalmente hago es bajar o subir decibeles, cortar o poner entradas
+efectuarle m\'{a}s tratamientos seria afectar la cuesti\'{o}n sonora natural
+de lo capturado por lo que evito esta cuesti\'{o}n. El ajuste generalmente
+se realiza durante la grabaci\'{o}n regulando la entrada de audio
+posteriormente en la edici\'{o}n modulo la cuesti\'{o}n del volumen y los dB
+con lo cual se elimina un poco el ruido, coloco un filtro de reducci\'{o}n
+de ruido normalmente del 2\%. }Para la edici\'{o}n sugiero un soporte con
+Adobe Audition, Audacity, Pro Tools, etc. \ El enfoque de espacio es muy
+importante en el paisaje sonoro, porque determina la informaci\'{o}n ac\'{u}%
+stica que hay en el sitio, la geolocalizaci\'{o}n del lugar da mucha
+informaci\'{o}n de la diversidad sonora y cultural. El paisaje sonoro es la
+manifestaci\'{o}n ac\'{u}stica del entorno pero tambi\'{e}n el entorno lo
+hacemos nosotros, la diversidad en la cual nos encontramos y en la cual nos
+desarrollamos es muy importante es esta espacialidad del lugar.-
+
+\textbf{5. \textquestiondown Qu\'{e} aplicaciones has dado a los paisajes
+sonoros?}
+
+\textit{- Toda la gama de informaci\'{o}n que te puede representar el sonido
+es muy importante m\'{a}s all\'{a} de lo que estas escuchando, m\'{a}s all%
+\'{a} de lo que uno est\'{a} interpretando porque puede mantener la riqueza
+de un ambiente cuidado, las aplicaciones que he dado en mi trabajo han sido
+de sensibilizar al o\'{\i}do y representar una cuesti\'{o}n cultural, porque
+muestro una parte de la sonoridad de una regi\'{o}n a otros o\'{\i}dos. -}
+
+\textbf{5. Parte Experimental.}
+
+\qquad \textbf{5.1 Equipo de grabaci\'{o}n.}
+
+a) Grabadora port\'{a}til con microfonos integrados.
+
+En el transcurso del proyecto se utilizo una grabadora port\'{a}til que
+incorpora microfonos en el propio cuerpo de la grabadora, pudiendo
+utilizarlas sin necesidad de tener que adaptarles microfonos externos. La
+caracteristica com\'{u}n de estas grabadoras es que sus dimensiones son
+reducidas por lo que su manipulaci\'{o}n en grabaciones de campo es
+sencilla. Las grabaciones obtenidas en el trasncurso del proyecto se realizar%
+\'{o}n con la grabadora port\'{a}til Tascam DR40, la cual puede grabar
+minimamente en calidad cinematogr\'{a}fica (48 kHz, 24 bits).
+
+\begin{center}
+\FRAME{dtbphF}{2.674in}{1.4399in}{0pt}{}{}{Figure}{\special{language
+"Scientific Word";type "GRAPHIC";maintain-aspect-ratio TRUE;display
+"USEDEF";valid_file "T";width 2.674in;height 1.4399in;depth
+0pt;original-width 7.8231in;original-height 4.1978in;cropleft "0";croptop
+"1";cropright "1";cropbottom "0";tempfilename
+'NGLJYI1B.wmf';tempfile-properties "XPR";}}
+
+Figura 1. Grabadora Tascam DR40
+\end{center}
+
+b) Audifonos sennheiser hd 205.
+
+Para realizar grabaciones de campo se utilizan audifonos de tipo cerrado
+para aislar lo m\'{a}ximo posible el ruido externo y tener una mayor precisi%
+\'{o}n en la escucha de la grabaci\'{o}n. Los audifonos seleccionados para
+tal fin fue el Sennheiser hd 205 pricipalmente por su caracter\'{\i}stica de
+respuesta en frecuencia,18-20 kHz.
+
+\FRAME{dtbphF}{2.4855in}{1.6016in}{0pt}{}{}{Figure}{\special{language
+"Scientific Word";type "GRAPHIC";maintain-aspect-ratio TRUE;display
+"USEDEF";valid_file "T";width 2.4855in;height 1.6016in;depth
+0pt;original-width 5.6559in;original-height 3.6357in;cropleft "0";croptop
+"1";cropright "1";cropbottom "0";tempfilename
+'NGLJYI1C.wmf';tempfile-properties "XPR";}}
+
+\begin{center}
+Figura 2. Audifonos Sennheiser hd 205
+\end{center}
+
+c) Accesorios:
+
+\qquad i) Tr\'{\i}pode: El tr\'{\i}pode es un soporte fijo para el
+microfono. Lo utilizamos principalmente para no causar ningun tipo de ruido
+debido al manejo, ni al movimiento del grabador.
+
+\qquad ii) Antiviento. El antiviento es una cubierta para la grabadora
+digital port\'{a}til dise\~{n}ada para mitigar las frecuencias asociadas al
+viento. Se podria decir que es el accesorio m\'{a}s importante para realizar
+grabaciones de campo.
+
+\FRAME{dtbphF}{1.6786in}{2.1862in}{0pt}{}{}{Figure}{\special{language
+"Scientific Word";type "GRAPHIC";maintain-aspect-ratio TRUE;display
+"USEDEF";valid_file "T";width 1.6786in;height 2.1862in;depth
+0pt;original-width 4.427in;original-height 5.7813in;cropleft "0";croptop
+"1";cropright "1";cropbottom "0";tempfilename
+'NGLJYI1A.wmf';tempfile-properties "XPR";}}
+
+\begin{center}
+Figura 3. Grabadora Tascam DR40 montada en tr\'{\i}pode y con antiviento
+\end{center}
+
+\textbf{\qquad 5.2 Grabaci\'{o}n de campo.}
+
+La primera caracter\'{\i}stica del paisaje sonoro corresponde al formato en
+el que se grab\'{o} y los micr\'{o}fonos utilizados, Durante las grabaciones
+en campo se utiliz\'{o} la grabadora de mano Tascam DR40 configurada para un
+formato de grabaci\'{o}n est\'{e}reo y una t\'{e}cnica microf\'{o}nica X-Y,
+los dos micr\'{o}fonos internos de est\'{a} grabadora son tipo condensador.
+
+Se realiz\'{o} grabaciones de paisajes sonoros en tres contextos diferentes,
+en cada uno de ellos la t\'{e}cnica de grabaci\'{o}n es muy similar
+dependiendo del modo y forma en que se dese\'{o} capturar los instantes
+sonoros, eventualmente nos desplaz\'{a}bamos un poco para detectar con mayor
+nitidez algunos de los elementos m\'{a}s relevantes del paisaje. A continuaci%
+\'{o}n se anexa la metodolog\'{\i}a que se utiliz\'{o} para cada caso.
+
+\textbf{\qquad \qquad 5.2.1 Paisaje sonoro natural, natural con elemento
+humano y urbano.}
+
+En los inicios del proyecto se busc\'{o} un \'{a}rea geogr\'{a}fica dentro
+del Distrito Federal que pudiera proveernos de un paisaje sonoro con las
+caracter\'{\i}sticas propias de un entorno natural, la elecci\'{o}n del
+espacio de estudio se seleccion\'{o} ajust\'{a}ndose en torno a los recursos
+materiales y econ\'{o}micos con los que se dispon\'{\i}a. As\'{\i} el \'{a}%
+rea dispuesta para este fin fue la Reserva Ecol\'{o}gica del Pedregal de San
+\'{A}ngel de la UNAM (REPSA), de la cual se seleccionaron dos \'{a}reas:
+paseo de las esculturas y centro escult\'{o}rico. Para el acceso a estas
+\'{a}reas se requiere tramitar el permiso correspondiente ante la SEREPSA
+(Secretaria de la Reserva Ecol\'{o}gica del Pedregal de San \'{A}ngel), el
+cual se recomienda realizar con al menos dos semanas de anticipaci\'{o}n,
+una vez liberados los permisos se procedi\'{o} a la identificaci\'{o}n y
+localizaci\'{o}n de puntos ac\'{u}sticos.
+
+Las primeras grabaciones se realizaron en formato est\'{e}reo, a 44.1 kHz y
+16 bits, con la t\'{e}cnica microf\'{o}nica A-B, monitoreando en todo
+momento la grabaci\'{o}n con aud\'{\i}fonos. Tras realizar los primeros an%
+\'{a}lisis de las grabaciones se not\'{o} la inevitable intervenci\'{o}n de
+los sonidos propios de la urbe (claxon, motor de autom\'{o}viles,
+martilleos, etc.), pocos eran los puntos ac\'{u}sticos en los que no se
+detectara algo similar y es por esto que se decidi\'{o} clasificar a las
+grabaciones obtenidas en Paseo de las Esculturas como paisajes naturales con
+el elemento humano.
+
+Despu\'{e}s de las primeras grabaciones tuvo lugar la primera entrevista con
+el experto en paisaje sonoro, grabaci\'{o}n de campo y experimentaci\'{o}n
+sonora Enrique Maraver Aguirre. En la cual se tuvo la oportunidad de
+identificar los factores que deb\'{\i}an corregirse y algunos m\'{a}s que deb%
+\'{\i}an ser a\~{n}adidos, entre estos:
+
+\textbullet\ Utilizar antiviento en la grabadora port\'{a}til Tascam DR40
+
+\textbullet\ Grabaci\'{o}n con calidad m\'{\i}nima cinematogr\'{a}fica a 24
+bits y 48 kHz
+
+\bigskip \textbullet\ Ajuste del nivel de entrada entre 38\%-50\% para
+evitar que los sonidos grabados distorsionen debido a se\~{n}ales de entrada
+demasiado potentes o que sean inaudibles por entradas demasiado d\'{e}biles
+en comparaci\'{o}n con el ruido de fondo. As\'{\i} como tambi\'{e}n una
+reducci\'{o}n de picos a -12 dB.
+
+\qquad\textbullet\qquad T\'{e}cnica microf\'{o}nica X-Y
+
+\qquad \textbullet \qquad Monitoreo con aud\'{\i}fonos, marcas recomendadas
+SENNHEISER o BOSE.
+
+Las subsecuentes grabaciones que se obtuvieron se realizaron en base a tales
+recomendaciones. Cabe comentar tambien que se tuvieron algunas
+inconvenientes en cuanto al acceso a las instalaciones de la REPSA debidas a
+las festividades del 2 de noviembre y despu\'{e}s a las marchas realizadas
+por estudiantes de la UNAM, aun cuando se contaba con los permisos.
+
+Por otra parte se eligi\'{o} para las grabaciones del paisaje sonoro natural
+el Parque Nacional \textquotedblleft La Malinche\textquotedblright,
+localizado en el estado Tlaxcala. Las grabaciones se llevaron a cabo en un
+horario entre 9:00 a.m. y 12:00 p.m. a lo largo de la misma ruta durante las
+dos sesiones de grabaci\'{o}n a un nivel de entrada entre 40\% y 50\%, con
+el correspondiente formato de grabaci\'{o}n antes mencionado y el equipo
+complementario.
+
+Para la captura de un paisaje sonoro urbano se seleccion\'{o} El Mexipuerto
+Ciudad Azteca, las grabaciones se realizar\'{o}n con las caracter\'{\i}%
+sticas t\'{e}cnicas utilizadas en los dos casos anteriores.
+
+\textbf{\qquad 5.3 Edici\'{o}n y an\'{a}lisis de las grabaciones.}
+
+Para la edici\'{o}n y el an\'{a}lisis de las grabaciones se procedi\'{o} de
+la siguiente manera:
+
+\qquad a) Se realiz\'{o} una base de datos de las grabaciones obtenidas, los
+datos capturados corresponden a la ubicaci\'{o}n geogr\'{a}fica (lecturas
+con GPS durante las grabaciones en paisaje sonoro natural), tiempo de grabaci%
+\'{o}n, d\'{\i}a y fecha.
+
+\qquad b) Posteriormente mediante el programa de c\'{o}mputo de c\'{o}digo
+abierto Audacity se realizaron correcciones en los audios para eliminar los
+sonidos capturados propios de la manipulaci\'{o}n del equipo durante las
+grabaciones, la herramienta b\'{a}sica aparte de la escucha atenta es
+visualizar el espectrograma del audio como se muestra en la siguiente figura.
+
+\begin{center}
+\FRAME{dtbphF}{3.2906in}{2.303in}{0pt}{}{}{Figure}{\special{language
+"Scientific Word";type "GRAPHIC";maintain-aspect-ratio TRUE;display
+"USEDEF";valid_file "T";width 3.2906in;height 2.303in;depth
+0pt;original-width 12.5519in;original-height 8.7605in;cropleft "0";croptop
+"1";cropright "1";cropbottom "0";tempfilename
+'NGLJYI1D.wmf';tempfile-properties "XPR";}}
+
+Figura 4. Espectrograma antes y despu\'{e}s de correcciones
+\end{center}
+
+\qquad c) Se realiz\'{o} la extracci\'{o}n de sonidos caracter\'{\i}sticos
+para la posterior construcci\'{o}n de los paisajes sonoros, utilizando la
+herramienta de espectrograma en Audacity.
+
+\qquad d) Por otra parte, las grabaciones se fraccionaron en audios con un
+minuto de duraci\'{o}n para homogenizar el tratamiento de la informaci\'{o}%
+n. Despu\'{e}s, cada uno de estos se edit\'{o} en Audacity para el an\'{a}%
+lisis de su espectro en el dominio de la frecuencia, con las siguientes
+propiedades:
+
+\qquad\qquad i) Algoritmo: Espectro
+
+\qquad\qquad ii) Funci\'{o}n: Ventana de Hanning
+
+\qquad\qquad iii) Tama\~{n}o de muestreo: 1024 bits
+
+\qquad \qquad iv) Eje: Frecuencia lineal
+
+\begin{center}
+\FRAME{dtbphF}{5.1232in}{1.7841in}{0pt}{}{}{Figure}{\special{language
+"Scientific Word";type "GRAPHIC";maintain-aspect-ratio TRUE;display
+"USEDEF";valid_file "T";width 5.1232in;height 1.7841in;depth
+0pt;original-width 12.8433in;original-height 4.4477in;cropleft "0";croptop
+"1";cropright "1";cropbottom "0";tempfilename
+'NGLJYI1E.wmf';tempfile-properties "XPR";}}
+
+\FRAME{dtbphF}{5.1923in}{1.8066in}{0pt}{}{}{Figure}{\special{language
+"Scientific Word";type "GRAPHIC";maintain-aspect-ratio TRUE;display
+"USEDEF";valid_file "T";width 5.1923in;height 1.8066in;depth
+0pt;original-width 12.8961in;original-height 4.4581in;cropleft "0";croptop
+"1";cropright "1";cropbottom "0";tempfilename
+'NGLJYK1K.wmf';tempfile-properties "XPR";}}
+
+\FRAME{dtbphF}{5.1716in}{1.7884in}{0pt}{}{}{Figure}{\special{language
+"Scientific Word";type "GRAPHIC";maintain-aspect-ratio TRUE;display
+"USEDEF";valid_file "T";width 5.1716in;height 1.7884in;depth
+0pt;original-width 12.8226in;original-height 4.4062in;cropleft "0";croptop
+"1";cropright "1";cropbottom "0";tempfilename
+'NGLJYJ1J.wmf';tempfile-properties "XPR";}}
+
+Figura 5. An\'{a}lisis de espectro en frecuencia paisaje natural, natural
+con elemento humano y urbano respectivamente
+
+\bigskip
+\end{center}
+
+Los datos obtenidos se exportan a un archivo .tex (vease figura 6). El tipo
+de unidad exportado es el dB (FS) (decibel Full Scale), es una raz\'{o}n
+logar\'{\i}tmica entre la intensidad grabada y una de referencia. Esta
+intensidad de referencia est\'{a} ligada al equipo que se utiliz\'{o} para
+la grabaci\'{o}n y en el hardware del computador y es de 0 dB.
+
+\FRAME{dtbphF}{1.5791in}{2.0617in}{0pt}{}{}{Figure}{\special{language
+"Scientific Word";type "GRAPHIC";maintain-aspect-ratio TRUE;display
+"USEDEF";valid_file "T";width 1.5791in;height 2.0617in;depth
+0pt;original-width 4.99in;original-height 6.5311in;cropleft "0";croptop
+"1";cropright "1";cropbottom "0";tempfilename
+'NGLJYJ1F.wmf';tempfile-properties "XPR";}}
+
+\begin{center}
+Figura 6. Datos del espectrograma.
+\end{center}
+
+e) En tablas de Excel se registr\'{o} la matriz de datos correspondientes al
+espectro de cada audio, de \'{e}stos \'{u}nicamente se exporto a Matlab los
+vectores correspondientes a la intensidad del sonido (dB), se aplic\'{o}
+normalizaci\'{o}n y posteriormente cada nuevo vector se exporto a Excel para
+su subsecuente uso en el entrenamiento de la red neuronal artificial.
+
+\textbf{6. Dise\~{n}o de la Red Perceptr\'{o}n Multicapa con algoritmo }
+
+\textbf{\qquad supervisado Backpropagation tipo gradiente.}
+
+\textbf{6.1 Principios b\'{a}sicos.}
+
+Las observaciones de la naturaleza y la de nosotros mismos son muy
+inspiradoras a la hora de crear t\'{e}cnicas y algoritmos aplicables en
+inteligencia Artificial. Son muchos autores que hacen comparaciones entre
+los procesadores que hacen funcionar nuestros ordenadores y el cerebro, De
+hecho llegan a hacer comparaciones entre el n\'{u}mero transistores y el n%
+\'{u}mero de neuronas de nuestro cerebro, No hace muchos a\~{n}os
+aventuraban que cuando el n\'{u}mero de transistores igualaran al n\'{u}mero
+de neuronas del cerebro, podr\'{\i}amos crear ordenadores inteligentes como
+nosotros mismos.
+
+Lo cierto es que no estamos tan lejos de construir procesadores con un n\'{u}%
+mero similar de transistores al n\'{u}mero de neuronas del cerebro de
+algunos animales; sin embargo estamos muy lejos de poder imitar su cerebro y
+la complejidad de sus capacidades. De hecho, la velocidad a la que se
+activan los transistores de los procesadores actuales, es muy superior a la
+velocidad de activaci\'{o}n de las neuronas humanas.
+
+La respuesta de \textquestiondown por qu\'{e} estamos muy lejos de emular
+dichas capacidades?, se halla en el diferente modelo de procesamiento en que
+opera un procesador, esto es, el procesador de una computadora opera de
+manera secuencial, mientras que el cerebro opera de manera paralela y
+concurrente, es por eso que el campo de procesamiento en paralelo es una de
+los campos de investigaci\'{o}n donde se invierten m\'{a}s esfuerzos
+actualmente.
+
+Las Redes Neuronales artificiales o RNAs son un intento de emular la forma
+de trabajar del cerebro humano, y aunque estamos lejos de alcanzar su misma
+capacidad son un instrumento de gran potencia para la gran cantidad de
+aplicaciones.
+
+Una neurona animal est\'{a} compuesta por un n\'{u}cleo rodeada de millones
+de conexiones que la unen a otras neuronas. Estas conexiones se denominan sin%
+\'{a}psis.
+
+Las conexiones se realizan mediante dos tipos de neurotransmisores, las
+dendritas y los axones. Seg\'{u}n la Neurociencia actual parece que una
+neurona funciona de manera similar a un transistor, es decir en un momento
+dado esta puede estar activa o no activa. En realidad no es as\'{\i}
+exactamente, pero podemos decir que se acerca mucho a este modelo
+
+Las neuronas se activan en funci\'{o}n de las dendritas. Las dendritas
+transportan se\~{n}ales el\'{e}ctricas desde otras neuronas. Cuando la
+cantidad de dendritas alcanzan un umbral determinado, la neurona se activa y
+env\'{\i}a se\~{n}ales el\'{e}ctricas a otras neuronas a trav\'{e}s de los
+axones.
+
+\begin{center}
+\qquad \qquad \qquad \qquad \FRAME{itbphF}{2.7155in}{2.0141in}{0in}{}{}{1.png%
+}{\special{language "Scientific Word";type "GRAPHIC";maintain-aspect-ratio
+TRUE;display "USEDEF";valid_file "F";width 2.7155in;height 2.0141in;depth
+0in;original-width 7.587in;original-height 5.6135in;cropleft "0";croptop
+"1";cropright "1";cropbottom "0";filename '../REPORTE PARTE
+1/Milcom/1.png';file-properties "XNPEU";}}
+
+\qquad \qquad \qquad \qquad Figura 7. Representaci\'{o}n de una Neurona
+\end{center}
+
+El Perceptr\'{o}n es un modelo simple de una neurona que permite presentar
+los conceptos b\'{a}sicos de c\'{o}mo opera la red aqu\'{\i} dise\~{n}ada.
+Al igual que una neurona real, al Perceptron llegan se\~{n}ales de entrada y
+saldr\'{a} una se\~{n}al que ser\'{a} la salida de una funci\'{o}n de
+activaci\'{o}n. Adem\'{a}s a cada una de estas entradas se le asigna una
+valor llamado peso w (por la palabra weight en Ingl\'{e}s) que da un
+significado de la fuerza de conexi\'{o}n entre la se\~{n}al de entrada y la
+neurona, tambi\'{e}n, por cada neurona existe un valor del umbral de disparo
+(b) que est\'{a} entre 0 y 1.
+
+A esta configuraci\'{o}n se le conoce como; red neuronal simple debido a que
+est\'{a} compuesta de una capa, es decir un solo bloque de neuronas entre
+las entradas y la salida de la red.
+
+La tarea del algoritmo es ajustar los pesos w y el valor de b a trav\'{e}s
+de un proceso llamado entrenamiento. A este tipo de redes se les llama
+aprendizaje supervisado ya que durante el entrenamiento se va proveyendo
+ejemplos a la red y seg\'{u}n la respuesta de la red comparada con la
+respuesta esperada, se ajustan los valores correspondientes. Dicho de otra
+manera para cada ejemplo habr\'{a} que indicar a la red neuronal cu\'{a}l es
+el resultado que deber\'{\i}a darse a la salida.
+
+El uso de redes Perceptr\'{o}n simples est\'{a} restringido a resolver
+problemas linealmente separables, ya sea en $%
+%TCIMACRO{\U{211d} }%
+%BeginExpansion
+\mathbb{R}
+%EndExpansion
+^{2}$ o en $%
+%TCIMACRO{\U{211d} }%
+%BeginExpansion
+\mathbb{R}
+%EndExpansion
+^{3}$, pero debido la forma gr\'{a}fica de los datos obtenidos, necesitamos m%
+\'{a}s capas en la red.
+
+Sin entrar en detalles, se puede decir que si se organiza un conjunto de
+neuronas formando una red, se consiguen diferentes niveles de complejidad en
+las particiones del plano o de cualquier otra dimensi\'{o}n. A la red de
+retro-propagaci\'{o}n es una red neuronal artificial que tienen la
+particularidad de que cada neurona est\'{a} conectada a todas las neuronas
+de la capa anterior, a las neuronas de la primera capa se les llama neuronas
+de capa de entrada, al conjunto de neuronas de la \'{u}ltima capa se les
+llama capa de salida y las neuronas que est\'{a}n en medio se les llama
+neuronas escondidas u ocultas [10].
+
+Con redes de una capa podemos resolver problemas linealmente separables, con
+redes de una capa oculta se pueden resolver problemas que son separables
+mediante curvas y con redes de dos capas ocultas se pueden resolver
+problemas en los que se den separaciones arbitrarias, por lo que en
+principio, no tiene mucho sentido usar m\'{a}s de dos capas ocultas en la
+red, ya que como se ve m\'{a}s adelante se trabajar\'{a} con el espetro de se%
+\~{n}ales de audio que son separables mediante curvas suaves.
+
+La funci\'{o}n de activaci\'{o}n que utilizan las redes perceptron multicapa
+debe de ser una funci\'{o}n derivable, esta funci\'{o}n es la funci\'{o}n
+sigmoidea descrita a continuaci\'{o}n.$\qquad \qquad \qquad \qquad \qquad
+\qquad $
+
+\begin{center}
+$\qquad \qquad \qquad \qquad \qquad \varphi (x)=\frac{1}{1+e^{-x}}$
+
+\qquad \qquad \FRAME{itbpFX}{2.9948in}{1.9969in}{0in}{}{}{Plot}{\special%
+{language "Scientific Word";type "MAPLEPLOT";width 2.9948in;height
+1.9969in;depth 0in;display "USEDEF";plot_snapshots TRUE;mustRecompute
+FALSE;lastEngine "MuPAD";xmin "-5";xmax "5";xviewmin
+"-5.0010000010002";xviewmax "5.0010000010002";yviewmin
+"5.55111512312578E-17";yviewmax "1";plottype 4;axesFont "Times New
+Roman,12,0000000000,useDefault,normal";numpoints 100;plotstyle
+"patch";axesstyle "normal";axestips FALSE;xis \TEXUX{x};var1name
+\TEXUX{$x$};function \TEXUX{$\frac{1}{1+e^{-x}}$};linecolor
+"black";linestyle 1;pointstyle "point";linethickness 1;lineAttributes
+"Solid";var1range "-5,5";num-x-gridlines 100;curveColor
+"[flat::RGB:0000000000]";curveStyle "Line";VCamFile
+'NGLJYK0N.xvz';valid_file "T";tempfilename
+'NGLJYI19.wmf';tempfile-properties "XPR";}}
+
+Figura 8. Funci\'{o}n sigmoide
+\end{center}
+
+Se pueden utilizar otro tipo de funciones como la tangente hiperb\'{o}lica
+pero en este caso sigue la sugerencia de [10] para usar la funci\'{o}n
+sigmoidea.
+
+\textbf{6.2 Fases del algoritmo de retro-propagaci\'{o}n.}
+
+El algoritmo de retro-propagaci\'{o}n tiene tres fases principales:
+
+1.-) La fase de inicializaci\'{o}n de los par\'{a}metros $W$ y $b$.
+
+se tiene la siguiente matriz de pesos:
+
+\begin{center}
+\qquad $W=$\bigskip $\left[
+\begin{array}{cccc}
+w_{11} & w_{12} & \cdots  & w_{1m} \\
+w_{21} & w_{22} & \cdots  & w_{2n} \\
+\vdots  & \vdots  & \ddots  & \vdots  \\
+w_{n1} & w_{n2} & \cdots  & w_{nm}%
+\end{array}%
+\right] $
+\end{center}
+
+donde:
+
+\bigskip $\qquad \qquad n:$ es el n\'{u}mero de se\~{n}ales que llegan a una
+capa dada
+
+$\qquad \qquad m:$ es el n\'{u}mero de neuronas de la capa reciben a las se%
+\~{n}ales ponderadas por$\ \ \ \ \ w_{i,j}$
+
+Los valores de $w_{i,j}$ pueden ser inicializados por valores reales entre
+-1 y 1. El sub \'{\i}ndice $i$ indica el n\'{u}mero se se\~{n}al de donde
+proviene y $j$ a que neurona se dirije.
+
+Cabe mencionar que en el algor\'{\i}tmo aqu\'{\i} propuesto, la matriz W es
+una hipermatriz donde cada capa tiene asociada la relacion de pesos entre
+una capa y la subsecuente.
+
+Como a cada neurona se le tiene que sumar un bias, entonces se puede manejar
+una matriz de Bias que se enumera de arriba hacia abajo en determinada capa,
+como:
+
+\begin{center}
+$\qquad B=\left[
+\begin{array}{ccc}
+b_{11} & b_{12} & b_{1m} \\
+b_{21} & b_{22} & b_{2n} \\
+\vdots  & \vdots  & \vdots  \\
+b_{nni} & b_{nnh} & b_{nn0}%
+\end{array}%
+\right] $
+\end{center}
+
+Donde cada columna es el arreglo de neuronas de una capa $i$ \ y cada capa
+puede cambiar el n\'{u}mero de neuronas. Los valores para inicializar a la
+matriz tambi\'{e}n pueden ser numeros aleatorios en un intervalo de 0 a 1.
+
+2.-) Segunda fase, propagaci\'{o}n hacia adelante.
+
+Como se explic\'{o} a la red se lepresentan valores de entrenamiento y los
+valores que se esperan a la salida para cada una de estas entradas, entonces
+se pueden representar tales entradas como vectores que poseen alg\'{u}n patr%
+\'{o}n que se desea identificar con un valor esperado o deseado.
+
+Como se explic\'{o} a la red se lepresentan valores de entrenamiento y los
+valores que se esperan a la salida para cada una de estas entradas, entonces
+se pueden representar tales entradas como vectores que poseen alg\'{u}n patr%
+\'{o}n que se desea identificar con un valor esperado o deseado.
+
+Entonces la entrada a la red puede ser escrita mediante:
+
+$\qquad \qquad \qquad $Patr\'{o}n\ de entrada =$\left[
+\begin{array}{cccc}
+x_{1} & x_{2} & \cdots  & x_{n}%
+\end{array}%
+\right] _{i}^{T}$
+
+\ \ \ \ El sub \'{\i}ndice $i$ indica que solo es un patr\'{o}n de todos los
+que se le presentaran a la red.
+
+Los valores esperados se escriben como:
+
+\bigskip $\qquad \qquad \qquad $valor\ esperado=$\left[
+\begin{array}{cccc}
+d_{11} & d_{12} & \cdots  & d_{1n} \\
+d_{21} & d_{22} & \cdots  & d_{2n} \\
+\vdots  & \vdots  & \ddots  & \vdots  \\
+d_{kn} & d_{k2} & \cdots  & d_{km}%
+\end{array}%
+\right] $
+
+Donde cada rengl\'{o}n es un vector esperado para cada patr\'{o}n de entrada
+
+\bigskip
+
+Se procede a calcular la la salida para cada neurona i de \bigskip una capa
+k, como sigue:
+
+\bigskip $\qquad \qquad N=\left[
+\begin{array}{c}
+n_{11} \\
+n_{21} \\
+\vdots \\
+n_{nn}%
+\end{array}%
+\right] _{k}=\left[
+\begin{array}{c}
+b_{11} \\
+b_{21} \\
+\vdots \\
+b_{nn}%
+\end{array}%
+\right] _{k}+\left[
+\begin{array}{cccc}
+w_{11} & w_{12} & \cdots & w_{1m} \\
+w_{21} & w_{22} & \cdots & w_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+w_{n1} & w_{n2} & \cdots & w_{nm}%
+\end{array}%
+\right] _{k}\left[
+\begin{array}{c}
+x_{1} \\
+x_{2} \\
+\vdots \\
+x_{n}%
+\end{array}%
+\right] _{k}$
+
+Donde el sub \'{\i}ndice k indica el n\'{u}mero de capa en el que se desea
+calcular las salidas de las neronas una vez que hayan pasado por su funci%
+\'{o}n de activaci\'{o}n correspondiente, entonces: la salida de la capa k
+es:
+
+$\qquad \qquad \qquad \qquad O_{k}=\varphi (N_{k})$
+
+Si el algoritmo se encuentra en la \'{u}ltima capa se calcula el error dado
+por la resta del valor esperado menos el valor en la \'{u}ltima capa.
+
+$\qquad \qquad \qquad \qquad e=O_{last}-D$
+
+La segunda fase es llamada de propagaci\'{o}n hacia atr\'{a}s en donde
+utiliza el error calculado en la primera fase y obtienen valores delta\ o
+gradientes para cada neurona desde la \'{u}ltima capa hasta la primera, dada
+por las siguientes expresiones:
+
+Para la \'{u}ltima capa:
+
+$\qquad \qquad \qquad \qquad \delta _{last}=\varphi
+(B+W_{last}O_{last})(1-\varphi (B+W_{last}O_{last}))e$
+
+\bigskip Para cualquier capa escondida:
+
+$\qquad \qquad \qquad \qquad \delta _{k}=\varphi (O_{k})(1-\varphi
+(O_{k}))\delta _{k+1}$
+
+La tercer fase es la actualizaci\'{o}n de los valores de los pesos y las
+bias de las neuronas dadas por las siguientes expresiones:
+
+$\qquad \qquad \qquad \qquad w(n+1)=w(n)+\alpha w(n-1)+\eta \delta (n)x$
+
+donde:
+
+$w(n+1)$: Es la actualizaci\'{o}n de los pesos
+
+$w(n)$: Es el peso actual
+
+$\alpha $: Es el factor de aprendizaje
+
+$\eta $: Factor momento
+
+$\delta (n)$: Es el gradiente o delta en esa neurona
+
+$\ x$: Es la entrada correspondiente\ a la neurona
+
+\bigskip La actualizaci\'{o}n de las bias se realiza de la siguiente manera:
+
+$\qquad \qquad \qquad \qquad \qquad b(n+1)=b(n)+\alpha b(n-1)+\eta \delta (n)
+$
+
+El algor\'{\i}tmo toma todos los patrones y despu\'{e}s hace la actualizaci%
+\'{o}n de los pesos y las bias en funci\'{o}n del error y las deltas.
+Entonces se realiza este proceso hasta que el error vaya convergiendo en un
+valor muy peque\~{n}o; a esta repetici\'{o}n se le conoce como \'{e}poca de
+entrenamiento.
+
+Dependiendo del factor de entrenamiento, el momento, el n\'{u}mero de capas,
+la forma de los patrones y el n\'{u}mero de clases a reconocer son las \'{e}%
+pocas necesarias para que el error converja en m\'{a}s o menos tiempo.
+
+\textbf{\qquad 6.1 Acondicionamiento de datos.}
+
+Los patrones de entrenamiento fueron obtenidos a trav\'{e}s de Audacity, que
+es un software libre para edici\'{o}n profesional de audio. Tal y como se
+muestra en la siguiente figura \textit{Audacity} analiza la se\~{n}al de
+audio en el dominio de la frecuencia y da como amplitud los decibeles en
+cada frecuencia dentro del rango audible.
+
+\begin{center}
+\qquad \qquad \qquad \FRAME{itbphF}{2.7034in}{2.041in}{0in}{}{}{2.png}{%
+\special{language "Scientific Word";type "GRAPHIC";maintain-aspect-ratio
+TRUE;display "USEDEF";valid_file "F";width 2.7034in;height 2.041in;depth
+0in;original-width 4.0802in;original-height 3.0727in;cropleft "0";croptop
+"1";cropright "1";cropbottom "0";filename '../REPORTE PARTE
+1/Milcom/2.png';file-properties "XNPEU";}}
+
+\qquad \qquad \qquad Figura 9. Espectro analizado por \textit{Adacity}
+\end{center}
+
+Los datos fueron almacenados en hojas de c\'{a}lculo para despu\'{e}s ser
+tratados y acondicionados; este proceso tuvo que ser manual debido a que el
+software \textit{Audacity} exporta los datos en archivos de formato \textit{%
+txt.}
+
+\qquad
+
+\begin{center}
+\FRAME{itbpF}{3.9098in}{2.0903in}{0in}{}{}{based.bmp}{\special{language
+"Scientific Word";type "GRAPHIC";maintain-aspect-ratio TRUE;display
+"USEDEF";valid_file "F";width 3.9098in;height 2.0903in;depth
+0in;original-width 6.1938in;original-height 3.2863in;cropleft "0";croptop
+"1";cropright "1";cropbottom "0";filename '../REPORTE PARTE
+1/Milcom/baseD.bmp';file-properties "XNPEU";}}
+
+Figura 10. Organizaci\'{o}n de los datos en hojas de c\'{a}lculo
+\end{center}
+
+\textbf{6.2 Entrenamiento de la red neuronal.}
+
+Datos de entrenamiento.
+
+\bigskip \FRAME{dtbphF}{4.3431in}{2.0678in}{0pt}{}{}{Figure}{\special%
+{language "Scientific Word";type "GRAPHIC";maintain-aspect-ratio
+TRUE;display "USEDEF";valid_file "T";width 4.3431in;height 2.0678in;depth
+0pt;original-width 11.8436in;original-height 5.6144in;cropleft "0";croptop
+"1";cropright "1";cropbottom "0";tempfilename
+'NGLJYJ1I.wmf';tempfile-properties "XPR";}}
+
+\begin{center}
+Figura 11. Grafica en Matlab de los datos de entrenamiento
+\end{center}
+
+Debido a que la red neuronal est\'{a} dise\~{n}ada para trabajar con
+funciones de activaci\'{o}n que se encuentran en un intervalo de 0 a 1 , los
+datos se normalizaron y se les aplico una simple operaci\'{o}n matem\'{a}%
+tica, para invertir los datos tal y como se describe en la siguiente figura:
+
+\begin{center}
+\FRAME{dtbphF}{4.1528in}{3.2863in}{0pt}{}{}{Figure}{\special{language
+"Scientific Word";type "GRAPHIC";maintain-aspect-ratio TRUE;display
+"USEDEF";valid_file "T";width 4.1528in;height 3.2863in;depth
+0pt;original-width 7.7392in;original-height 6.1142in;cropleft "0";croptop
+"1";cropright "1";cropbottom "0";tempfilename
+'NGLJYJ1H.wmf';tempfile-properties "XPR";}}\qquad \qquad \qquad \qquad
+\qquad
+
+Figura 12. Patrones de entrenamiento\qquad
+\end{center}
+
+Despu\'{e}s del entrenamiento, se obtuvo la hipermatriz matriz de pesos y la
+matriz de bias perteneciente a cada capa. Como se muestra en la figura
+siguiente, la matriz de pesos consta de tres capas de matrices de nxn, donde
+n es el n\'{u}mero de datos y la matriz de bias es una matriz de una capa de
+tama\~{n}o y igual al n\'{u}mero de datos del patr\'{o}n por tres columnas.
+
+Se considera que despu\'{e}s del entrenamiento, un rasgo caracter\'{\i}stico
+es la forma geom\'{e}trica de dichas matrices en el espacio, debido a que
+para diferentes patrones presentados en la misma red se generar\'{a}n
+diferentes valores para los pesos y las bias correspondientes un modelo
+grafico de la red para discriminar diferentes patrones esta dado como se ve
+a continuaci\'{o}n.
+
+\begin{center}
+\FRAME{itbphF}{4.5671in}{2.7968in}{0in}{}{}{4.bmp}{\special{language
+"Scientific Word";type "GRAPHIC";display "USEDEF";valid_file "F";width
+4.5671in;height 2.7968in;depth 0in;original-width 9.1065in;original-height
+4.3405in;cropleft "0";croptop "1";cropright "1";cropbottom "0";filename
+'../REPORTE PARTE 1/Milcom/4.bmp';file-properties "XNPEU";}}
+
+Figura 13. Hipermatriz de capas de la red neuronal
+\end{center}
+
+\bigskip
+
+La matriz de Bias es la matriz que pondera la a cada neurona brindandole un
+grado de libertad para discriminar por el nivel de la entrada y as\'{\i} ser
+flexible a los cambios de nivel.
+
+\begin{center}
+\FRAME{dtbphF}{4.4521in}{2.0366in}{0pt}{}{}{Figure}{\special{language
+"Scientific Word";type "GRAPHIC";maintain-aspect-ratio TRUE;display
+"USEDEF";valid_file "T";width 4.4521in;height 2.0366in;depth
+0pt;original-width 10.4063in;original-height 4.7392in;cropleft "0";croptop
+"1";cropright "1";cropbottom "0";tempfilename
+'NGLJYJ1G.wmf';tempfile-properties "XPR";}}
+
+\qquad Figura 14. Matriz de Bias de la red neuronal
+\end{center}
+
+\bigskip
+
+\textbf{\qquad }La matriz tiene una dimensi\'{o}n igual al n\'{u}mero de
+datos de entrada para los renglones y 3 columnas que indican el n\'{u}mero
+de capas.
+
+Una vez que se tiene el entrenamiento de la red terminada se procede a ver
+el desempe\~{n}o de la red present\'{a}ndole sonidos diferentes a los datos
+de entrenamiento y verificar si dicho entrenamiento fue exitoso.Todo esto
+con el proposito de saber cuando detener el entrenamiento de la red, ya que
+podrian ser modificados algunos pr\'{a}metros de tal manera que la salida de
+la red arrojara resultados diferenciables gr\'{a}ficamente, tal y como se
+muestra en las siguientes figuras, depende el n\'{u}mero de \'{e}pocas de
+entrenamiento:
+
+\begin{center}
+\FRAME{itbpF}{4.8888in}{2.3428in}{0in}{}{}{salida5.bmp}{\special{language
+"Scientific Word";type "GRAPHIC";maintain-aspect-ratio TRUE;display
+"USEDEF";valid_file "F";width 4.8888in;height 2.3428in;depth
+0in;original-width 9.0001in;original-height 4.3007in;cropleft
+"0.054215";croptop "0.99051";cropright "1.054215";cropbottom
+"-0.00949";filename '../REPORTE PARTE 1/Milcom/salida5.bmp';file-properties
+"XNPEU";}}
+
+Figura 15. Resultado para 500 \'{e}pocas\qquad
+
+\textbf{\qquad }\FRAME{itbphF}{4.8161in}{2.3082in}{0in}{}{}{s6.bmp}{\special%
+{language "Scientific Word";type "GRAPHIC";display "USEDEF";valid_file
+"F";width 4.8161in;height 2.3082in;depth 0in;original-width
+9.0001in;original-height 4.3007in;cropleft "0";croptop "1";cropright
+"1";cropbottom "0";filename '../REPORTE PARTE
+1/Milcom/s6.bmp';file-properties "XNPEU";}}
+
+Figura 16. Resultado para 600 \'{e}pocas
+
+\FRAME{itbpF}{4.9199in}{2.3583in}{0in}{}{}{s8.bmp}{\special{language
+"Scientific Word";type "GRAPHIC";maintain-aspect-ratio TRUE;display
+"USEDEF";valid_file "F";width 4.9199in;height 2.3583in;depth
+0in;original-width 9.0001in;original-height 4.3007in;cropleft "0";croptop
+"1";cropright "1";cropbottom "0";filename '../REPORTE PARTE
+1/Milcom/S8.bmp';file-properties "XNPEU";}}
+
+Figura 17. Resultado para 800 \'{e}pocas
+\end{center}
+
+Como se puede observar, un sobre entrenamiento comienza generar que el
+entorno semiperturbado y el natural sean para la red indistintos, entonces
+de acuerdo a los experimentos realizados con la red, se escogieron valores
+para los cuales esta presenta una mejor discriminaci\'{o}n de los entornos, m%
+\'{a}s de 500 \'{e}pocas y menos de 1000.
+
+Una vez obtenida la discriminaci\'{o}n, se lleva a cabo una correlaci\'{o}n
+con una base de datos simplificada de la OMS, esta tabla posee la informaci%
+\'{o}n de niveles de volumen para sonido en decibeles, y ejemplos de
+ambientes que se pueden parecer al presentado a la red.
+
+\qquad
+
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+& FUENTES DE SONIDO & dB \\ \hline
+1 & Umbral de audici\'{o}n & 0 \\ \hline
+2 & Susurro, respiraci\'{o}n normal, pisadas suaves & 10 \\ \hline
+3 & Rumor de las hojas en el campo al aire libre & 20 \\ \hline
+4 & Murmullo, oleaje suave en la costa & 30 \\ \hline
+5 & Biblioteca, habitaci\'{o}n en silencio, Despacho & 40 \\ \hline
+6 & Tr\'{a}fico ligero, conversaci\'{o}n normal & 50 \\ \hline
+7 & Oficina grande en horario de trabajo & 60 \\ \hline
+8 & Conversaci\'{o}n en voz muy alta, griter\'{\i}a, tr\'{a}fico,intenso de
+ciudad & 70 \\ \hline
+9 & Timbre, cami\'{o}n pesado movi\'{e}ndose & 80 \\ \hline
+10 & Aspiradora funcionando, maquinaria de una f\'{a}brica trabajando & 90
+\\ \hline
+11 & Banda de m\'{u}sica rock, Motocicleta & 100 \\ \hline
+12 & Claxon de un coche, explosi\'{o}n de petardos & 110 \\ \hline
+13 & Umbral del dolor & 120 \\ \hline
+14 & Martillo neum\'{a}tico (de aire) & 130 \\ \hline
+15 & Avi\'{o}n de reacci\'{o}n durante el despegue & 150 \\ \hline
+16 & Motor de un cohete espacial durante el despegue & 180 \\ \hline
+\end{tabular}
+
+Tabla 2. Rangos de sonido de la OMS \ [3]
+\end{center}
+
+Cabe mencionar que todos los datos que forman parte de la informaci\'{o}n
+que necesita este sistema clasificador fueron vaciados en hojas de c\'{a}%
+lculo para su f\'{a}cil manejo computacional.\
+
+\ El resultado del conjunto de facultades de este sistema calificador, es
+mostrar el espectro analizado a manera de comprobaci\'{o}n del
+performance\bigskip de la red neuronal, ejemplos asociados a los intervalos
+de volumenes y como la red identifica el sonido analizado, todo esto en una
+aplicaci\'{o}n de escritorio \textit{standalone.}
+
+En la siguiente figura se muestra la aplicaci\'{o}n realizada en un
+formulario de la paqueter\'{\i}a \textit{Matlab }; como se observa, la
+interfaz cuenta con un comando que abre el explorador de archivos para
+escoger la hoja de c\'{a}lculo, despu\'{e}s se realiza la calificaci\'{o}n
+del entorno y un ejemplo de qu\'{e} provocar\'{\i}a dicho espectro seg\'{u}n
+la OMS.
+
+\begin{center}
+\qquad \qquad \FRAME{itbpF}{2.8513in}{2.2451in}{0in}{}{}{aplicaci�n2.bmp}{%
+\special{language "Scientific Word";type "GRAPHIC";maintain-aspect-ratio
+TRUE;display "USEDEF";valid_file "F";width 2.8513in;height 2.2451in;depth
+0in;original-width 7.1866in;original-height 5.6394in;cropleft "0";croptop
+"1";cropright "1";cropbottom "0";filename '../REPORTE PARTE
+1/Milcom/aplicaci�n2.bmp';file-properties "XNPEU";}}
+
+\qquad \qquad Figura 18. Aplicaci\'{o}n standalone
+\end{center}
+
+\textbf{6.3 Modo de operaci\'{o}n de la aplicaci\'{o}n.}
+
+Esta versi\'{o}n b\'{a}sica de la aplicaci\'{o}n consta del manejo del
+software \textit{Audacity}, una hoja de c\'{a}lculo y la aplicaci\'{o}n de
+escritorio dise\~{n}ada en \textit{Matlab}, como se observa en la figura el
+usuario necesita analizar con \textit{Audacity} el sonido en formato wav,
+que previamente ha guardado en el ordenador, despu\'{e}s de la sesi\'{o}n de
+grabaci\'{o}n.
+
+En el menu abrir se selecciona el archivo wav y una vez cargado, seguir los
+siguientes pasos:
+
+Menu analizar, escoger formato espectro y dar clic en el comando exportar,
+la exportaci\'{o}n de los datos del espectro es en formato txt, ese archivo
+se guardar\'{a} en la misma carpeta donde se encuentra el archivo wav, una
+vez que se tienen los datos en txt se debe copiar manualmente los vectores y
+ponerlos en hojas de calculo para su f\'{a}cil manejo en el procesamiento de
+la aplicaci\'{o}n de escritorio.
+
+Entonces la aplicaci\'{o}n solicita al usuario identificar la columna en la
+cual estan almacenados los datos, y el n\'{u}mero de hoja en el que se
+encuentran.
+
+Como se aprecia en la figura 18 (\textit{vease figura anterior}) el
+resultado es la califacci\'{o}n entre las clases \textit{PERTURBADO,}
+\textit{SEMI-PERTURBADO} y \textit{NATURAL, }adem\'{a}s se despliega una
+situaci\'{o}n en la que es an\'{a}logo el volumen analizado con respecto a
+la tabla de la OMS.
+
+\textbf{Conclusiones.}
+
+El desempe\~{n}o de la Red Neuronal no solo depende de los par\'{a}metros $%
+\alpha ,$ \ y $\eta ,$ , si no tambi\'{e}n del n\'{u}mero de \'{e}pocas y la
+forma de los datos de entrenamiento, para esto fue necesario del uso de
+softwares adicionales, para que el uso de los datos en otro dominio generara
+informaci\'{o}n razonablemente.
+
+La calidad de identificaci\'{o}n depende en gran medida de los instrumentos
+utilizados, debido a que por ejemplo, si se quisiera llevar todo el
+procesamiento directamente a un dispositivo m\'{o}vil, se estar\'{\i}a
+dependiendo de la calidad de grabaci\'{o}n que posee, aspecto que en la
+actualidad no es tiene buena calidad al compararlo con grabadoras
+profesionales, entonces, se puede decir que hasta que se evolucione la
+tecnolog\'{\i}a en cuanto a la grabaci\'{o}n de audio, ser\'{a} posible
+implementar la aplicaci\'{o}n presentada en los dispositivos m\'{o}viles.
+
+En cuanto a paisajes sonoros se refiere los estudios sugieren en un momento
+que la contaminaci\'{o}n ac\'{u}stica se ha convertido en un problema
+reconocido y ampliamente extendido, cualesquiera sean las acciones que se
+han tomado hasta ahora para mitigar este problema parecen no tener
+suficiente efecto. Hasta este punto,  en el presente proyecto, se ha podido
+obtener una m\'{e}trica de la calidad de los paisajes sonoros, lo que sigue
+sera desarrollar herramental de mejor\'{\i}a del nivel de bienestar psicol%
+\'{o}gico a trav\'{e}s de la s\'{\i}ntesis de paisajes ac\'{u}sticos de
+calidad.
+
+\textbf{Referencias.}
+
+$^{1}$. La Bauhaus fue una escuela de arte, arquitectura y dise\~{n}o;
+fundada por el arquitecto, urbanista y dise\~{n}ador de origen germano
+Walter Gropius en Weimar ( Alemania) en 1919.
+
+$^{2}$. Truax, Acoustic Communications, 2001, pp 11.
+
+$^{3}$. Moles, La imagen sonora del mundo circulante, fonograf\'{\i}as y
+paisajes sonoros 1999, pp 229-243.
+
+$^{4}$. Schafer sostiene que en algunos casos estos sonidos podr\'{\i}an ser
+arquet\'{\i}picos. Estar en el subconsciente del escucha ya que han sido
+percibidos durante milenios por sus antepasados.
+
+$^{5}$. Moles describe los elementos figura y fondo en oposici\'{o}n, como
+elementos constitutivos del paisaje sonoro. (Moles, La imagen sonora del
+mundo circulante, fonograf\'{\i}as y paisajes sonoros 1999, pp 229-243)
+
+$^{6}$. Esto ser\'{\i}a la relaci\'{o}n entre el primero y segundo planos,
+es decir, entre las figuras y el fondo, descritos por Schafer.
+
+$^{7}$. Manuel Rocha Iturbide interpreta perspectiva como amplitud de fondo,
+es decir, en donde varias capas s\'{o}nicas se pueden manifestar y
+distinguirse unas de otras.
+
+$^{8}$. Schafer, The tuning of the World, 1977, pp43.
+
+\textbf{Bibliografia consultada.}
+
+[1] Atienza Ricardo, Ambientes sonoros urbanos : la identidad sonora. Modos
+de Permanencia y Variaci\'{o}n de una configuraci\'{o}n urbana, 2007, p\'{a}%
+g 2,3, 6,8 y 13.
+
+[2] Jos\'{e} Luis CARLES / Cristina PALMESE (2004): Identidad sonora urbana.
+http://www.eumus.edu.uy
+
+[3] Robert MURRAY SCHAFER (1977) : The tuning of the world. Toronto. Ed.
+McClelland and Steward.
+
+[4] Hildegard Westerkamp. Brahaus y estudios sobre el paisaje sonoro -
+Explorando conexiones y diferencias: El surgimiento de los estudios sobre el
+paisaje sonoro.
+
+[5] Max Nehaus. Dise\~{n}o sonoro.
+
+[6] Hans-Ulrich Werner. Tres instant\'{a}neas sobre el paisaje sonoro. Dise%
+\~{n}o ac\'{u}stico - Dise\~{n}o sonoro.
+
+[7] Sol Rezza. Revista de pensament musical, n\'{u}m. 004: El mundo es un
+paisaje sonoro (3 percepciones respecto al paisaje sonoro).
+
+[8] Barry Truax: Compositor canadiense especializado en las implementaciones
+en tiempo real de la s\'{\i}ntesis granular, a menudo de sonidos grabados y
+paisajes sonoros. En 1986 desarroll\'{o} la primera implementaci\'{o}n en
+tiempo real de la s\'{\i}ntesis granular. Hizo la primera obra en s\'{\i}%
+ntesis granular hecha a base en sonidos pregrabados, Wings of Nike en 1987 y
+fue el primer compositor en explorar el \'{a}rea entre la s\'{\i}ntesis
+granular sincr\'{o}nica y asincr\'{o}nica en Riverrun, en1986. La t\'{e}%
+cnica en tiempo real sigue o enfatiza en las corrientes auditor\'{\i}as, que
+junto con los paisajes sonoros hacen parte importante de su est\'{e}tica.
+Truax ense\~{n}a m\'{u}sica electroac\'{u}stica, m\'{u}sica por computador y
+comunicaci\'{o}n ac\'{u}stica en la Universidad Simon Fraser en Canad\'{a}.
+Fue uno de los miembros fundadores junto con Raymond Murray Schaffer del
+World Soundscape Project.
+
+[9] Jordi Pigem. Escuchar las voces del mundo.
+
+[10] Fundamentals of Neural Networks, architectures, Algorithms and
+applications, Laurene Fausett , 1994, Prentice Hall.\
+
+[11] http://www.fceia.unr.edu.ar/acustica/biblio/omscrit.htm
+
+\bigskip
+
+\qquad
+
+\qquad
+
+\begin{center}
+\bigskip
+\end{center}
+
+% \end{document}

@@ -1,0 +1,187 @@
+% \documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+%
+% \usepackage{hyperref}% in order to use hyperlinks
+% \usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+% %\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+% \usepackage[english]{babel} % English language/hyphenation
+% \usepackage{amsmath,amsfonts,amsthm} % Math packages
+% \usepackage{graphicx}
+% \usepackage{epstopdf}
+% \DeclareGraphicsExtensions{.eps}
+% \usepackage{subcaption}
+%
+% %\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+%
+% %\usepackage{sectsty} % Allows customizing section commands
+% %\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+%
+% \usepackage{fancyhdr} % Custom headers and footers
+% \pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+% \fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+% \fancyfoot[L]{} % Empty left footer
+% \fancyfoot[C]{} % Empty center footer
+% \fancyfoot[R]{\thepage} % Page numbering for right footer
+% \renewcommand{\headrulewidth}{0pt} % Remove header underlines
+% \renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+% \setlength{\headheight}{13.6pt} % Customize the height of the header
+%
+% \numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+% \numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+% \numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+%
+% \setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+%
+% %----------------------------------------------------------------------------------------
+% %	TITLE SECTION
+% %----------------------------------------------------------------------------------------
+%
+% \newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+%
+% \title{
+% \normalfont \normalsize
+% \textsc{CINVESTAV, Automatic Control Department} \\ [25pt] % Your university, school and/or department name(s)
+% \horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+% \huge Benford's Law in Dynamical Systems \\ % The assignment title
+% \horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+% }
+%
+% \author{Emanuel Rocha Campos, Gerardo E. Cardona S\'anchez} % Your name
+%
+% \date{\normalsize\today} % Today's date or a custom date
+%
+% \begin{document}
+
+\maketitle % Print the title
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+\section{Overview}
+\input{articulos/2-benford/secciones/Introduction.tex}
+%------------------------------------------------
+
+\subsection{Benford's Law}
+\input{articulos/2-benford/secciones/Benford.tex}
+
+\subsubsection{Fibonacci Sequence}
+\input{articulos/2-benford/secciones/Benford_Fibonacci.tex}
+
+\subsubsection{Mexico's Municipalities Population}
+\input{articulos/2-benford/secciones/Benford_Mex_inegi.tex}
+
+\subsection{Autonomous Circuits}
+\input{articulos/2-benford/secciones/Autonomous_Circuits.tex}
+
+\subsection{Defining Chaos}
+\input{articulos/2-benford/secciones/Chaos.tex}
+
+\subsubsection{Lyapunov Exponent}
+\input{articulos/2-benford/secciones/Lyapunov_exponent.tex}
+
+\subsubsection{Chua's Circuit}
+\input{articulos/2-benford/secciones/Chua.tex}
+
+\subsubsection{Takougang Circuit}
+\input{articulos/2-benford/secciones/Takougang.tex}
+
+\section{Simulations}
+\input{articulos/2-benford/secciones/Sim.tex}
+
+%------------------------------------------------
+\section{Experimental Results}
+\input{articulos/2-benford/secciones/results.tex}
+
+\section{Conclusion}
+\input{articulos/2-benford/secciones/Conclusions.tex}
+%----------------------------------------------------------------------------------------
+%  BIBLIOGRAPHY
+\begin{thebibliography}{1}
+
+\bibitem{Benford38}
+  Benford Frank,
+  \emph{The law of anomalous numbers}.
+  Proc. Amer. Philos. Soc. 78,
+  (1938),
+  551-572.
+
+\bibitem{Nigrini97}
+  Nigrini Mark J., Mittermaier Linda J.
+  \emph{The use of Benford's Law as an Aid in Analytical Procedures}
+  Auditing: A Journal of Practice \& Theory,
+  (1997),
+  52-67
+
+\bibitem{Kreuzer14}
+  Matthias Kreuzer, Denis Jordan, PhD, Bernd Antkowiak, Berthold Drexler, Eberhard F. Kochs, and Gerhard Schneider
+  \emph{Brain Electrical Activity Obeys Benford's Law}
+  Neuroscience in Anesthesiology and Perioperative Medicine,
+  (2014),
+  183-191
+\bibitem{Strogatz14}
+ Steven H. Strogatz
+  \emph{Nonlinear Dynamics and Chaos, With Applications to Physics, Biology, Chemistry and Engineering, Second Edition}
+  Westview Press,
+  (2014),
+  309-191
+\bibitem{Parlitz92}
+  U. Parlitz
+  \emph{Lyapunov's Exponent from Chua's Circuit}
+  Journal of Circuits, Systems, and Computers,Vol. 3, No.2
+  (1992),
+  507-523
+\bibitem{Kennedy95}
+  Michale Peter Kennedy
+  \emph{Experimental Chaos from Autonomous Electronic Circuits}
+  Phil. Trans. R. Soc. Lond. A,
+  (1995),
+  507-523
+
+\bibitem{Ayrom86}
+Ayrom F.,
+ \emph{Chaos in Chua's Circuit},
+ IEE Proceedings, Vol. 133, No. 6 307-312
+ , 1986,
+ 307-312
+
+
+\bibitem{Takougang13}
+Sifeu Takougang Kingni, Lars Keuninckx, Paul Woafo,  Guy Van der Sande, Jan Danckaert
+\emph{Dissipative chaos, Shilnikov chaos and bursting oscillations
+in a three-dimensional autonomous system: theory
+and electronic implementation}
+Nonlinear Dynamics,
+2013
+
+\bibitem{Torres07} Torres J. et al.,
+ \emph{How do numbers begin? (The first digit law)},
+  Eur. J. Phys., Vol. 28,
+   2007,
+   17-25
+
+\bibitem{Tolle00}
+Charles R. Tolle, Joanne L. Budzien, and Randall A. LaViolette
+\emph{Do dynamical systems follow Benford’s law?}
+Chaos: An Interdisciplinary Journal of Nonlinear Science 10,
+ 331,
+2000
+\bibitem{Perc03}
+Perc, M., Marhl, M.
+\emph{ Different types of bursting calcium
+oscillations in non-excitable cells},
+Chaos Solitons Fractals 18,
+ 759–773
+2003
+\bibitem{Sherman88}
+Sherman, A., Rinzel, J., Keizer, J.
+\emph{ Emergence of organized bursting in clusters of pancreatic $\beta$-cells by channel sharing},
+Biophys. J. 54, 411–425,
+1988
+\bibitem{Ermentrout09}
+\emph{Mathematical Foundations of Neuroscience}
+Interdiscplinary Applied Mathematics 35,
+103-126,
+2009
+\end{thebibliography}
+
+% \end{document}
