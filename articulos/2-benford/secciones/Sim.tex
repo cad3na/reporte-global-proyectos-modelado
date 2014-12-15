@@ -10,7 +10,7 @@ Simulations with Chua's System and the system proposed by \cite{Takougang13} wer
 \frac{G}{C1}V_2-\frac{G'_b}{C_1}V_1-(\frac{G_a-G_b}{C_1})E &\quad if \quad V_1>E
 \end{align*}
 is given by the following schematic
-            \begin{figure}[h]
+            \begin{figure}[H]
             \centering
             \includegraphics[scale=0.4]{imagenes/2-benford/chuas_circuit_realized.jpg}
             \caption{OP-Amp Based realization of Chua's Circuit}
@@ -36,7 +36,7 @@ and a 8mH Inductor given by the gyrator circuit.
 \end{figure}
    \item \textbf{Benford Analysis}
           The first digit distribution was determined from the voltage measured at the terminals of C1, using a resistance value of 1860$\Omega$, at that value, Chua's Circuit presented Chaotic Behaviour. The first digits (without leading zeroes) of the voltage values at discrete points were analyzed. We compared the first digit distribution of the dataset with the distribution given by Benford's Law using the Mean Absolute Deviation (MAD) proposed by \cite{Nigrini97}. We got a MAD value of 0.22, with a maximum of 0.15 in order to be conformant with Benford's Law.
-            \begin{figure}[h]
+            \begin{figure}[H]
             \centering
             \includegraphics[scale=0.5]{imagenes/2-benford/chua_benford.png}
             \caption{OP-Amp Based realization of Chua's Circuit}
@@ -48,7 +48,7 @@ and a 8mH Inductor given by the gyrator circuit.
   \begin{itemize}
    \item \textbf{Physical Realization}
     The electronic circuit built to realise the system is shown in figure 2.4:
-            \begin{figure}[h]
+            \begin{figure}[H]
             \centering
             \includegraphics[scale=0.3]{imagenes/2-benford/Circuit2_schem.png}
             \caption{Circuit Schematic}
@@ -66,14 +66,14 @@ Voltages $V_x$,$V_y$ and $V_z$ are the output voltages of the operational amplif
 The values for resistors and capacitor used where: $R_1=0.5\text{ K}\Omega, \quad R_2=10\text{ K}\Omega, \quad R_3=10\text{ K}\Omega, \quad R_4=5\text{ K}\Omega, \quad R_5=1.15\textbf{\text{ M}}\Omega, \quad R_3=1\text{ M}\Omega, \quad C_1=100\text{ nF}, \quad C_2=100\text{ nF}, \quad C_3=10\text{ nF}, \quad V_b=10\text{ K}\Omega$
    \item \textbf{Numerical Simulations}
 We used SIMULINK in order to model the system and MATLAB to create the bifurcation diagram.
-            \begin{figure}[h]
+            \begin{figure}[H]
             \centering
             \includegraphics[scale=0.4]{imagenes/2-benford/shilkinovsimu.png}
             \caption{Simulink simulation}
             \end{figure}
 The response of the syste with the parameters indicated above is given by figure 2.5:
 
-\begin{figure}[h]
+\begin{figure}[H]
          \centering
             \begin{subfigure}[b]{0.4\textwidth}
             \includegraphics[width=\textwidth]{imagenes/2-benford/shilkino_resp.png}
@@ -89,7 +89,7 @@ Bifurcation diagram for the z value
 
    \item \textbf{Correspondence with Benford's Law} The same methodology used in Chua's Circuit was used with this circuit, taking measurements from $V_y$ and using the MAD test to verify conformity with the First Digit Distribution
 
-            \begin{figure}[h]
+            \begin{figure}[H]
             \centering
             \includegraphics[scale=0.4]{imagenes/2-benford/Sh_vy.png}
             \caption{$V_x$ against Benford's Law}
