@@ -64,13 +64,13 @@ M(q)\ddot{q}+C(q,\dot{q})\dot{q}+G(q)=\tau\label{din}
 where $M(q)\in\mathbb{R}^{n\times n}$ denotes a symmetric positive definite inertial matrix, $C(q,\dot{q})\in\mathbb{R}^{n\times n}$ stands for the Coriolis and centrifugal forces matrix, $G(q)\in\mathbb{R}^n$ models the gravity forces, $\tau\in\mathbb{R}^n$ stands for the torque input.
 
 \section{Adaptive Control}
-The nonlinear robot dynamics is linearly parametrizable \citep{Slotine} by the product of a regressor $Y=Y(q,\dot{q},\ddot{q})\in\mathbb{R}^{n\times p}$ which is a function of joint positions, velocities and accelerations, and a vector $\Theta\in\mathbb{R}^{p\times1}$ of constant parameters, as follows:
+The nonlinear robot dynamics is linearly parametrizable \cite{Slotine} by the product of a regressor $Y=Y(q,\dot{q},\ddot{q})\in\mathbb{R}^{n\times p}$ which is a function of joint positions, velocities and accelerations, and a vector $\Theta\in\mathbb{R}^{p\times1}$ of constant parameters, as follows:
 
 \begin{equation}
 M(q)\ddot{q}+C(q,\dot{q})\dot{q}+G(q)=Y(q,\dot{q},\ddot{q})\Theta=\tau\label{din2}
 \end{equation}
 
-Consider the control law \citep{Adapt}
+Consider the control law \cite{Adapt}
 
 \begin{equation}
 \tau=M(q)\ddot{q_r}+C(q,\dot{q})\dot{q_r}+G(q)+K_D\sigma\label{mal}
@@ -153,7 +153,7 @@ This equation doesn't imply that $\hat{\Theta}$ tends to $\Theta$; indeed, conve
 \end{itemize}
 
 \section{The Nengo Neural Simulator}
-Nengo\citep{brain} is a graphical ans scripting bases software package for simulating large-scale neural systems. To use Nengo, you define groups of neurons in terms of what they represent, and then form connections between neural groups in terms of what computation should be performed on those representations. Nengo then uses the Neural Engineering Framework (NEF) to solve for the appropriate synaptic connection weights to achieve this desired computation.\\
+Nengo\cite{brain} is a graphical ans scripting bases software package for simulating large-scale neural systems. To use Nengo, you define groups of neurons in terms of what they represent, and then form connections between neural groups in terms of what computation should be performed on those representations. Nengo then uses the Neural Engineering Framework (NEF) to solve for the appropriate synaptic connection weights to achieve this desired computation.\\
 
 The following three principles form the core of the NEF:
 
@@ -354,22 +354,42 @@ The torque inputs have a maximum value by the same reason of the initial conditi
 
 \begin{figure*}[tb]
 \centering
-\subfigure[Joint error $e_1$]{
-   \includegraphics[scale =0.45] {imagenes/6-neuronal/e1g.png}
-   \label{fig:e1g}
- }
- \subfigure[Joint error $e_2$]{
-   \includegraphics[scale =0.45] {imagenes/6-neuronal/e2g.png}
-   \label{fig:e2g}
- }
- \subfigure[Torque input $\tau_1$]{
-   \includegraphics[scale =0.45] {imagenes/6-neuronal/T1g.png}
-   \label{fig:T1g}
- }
- \subfigure[Torque input $\tau_2$]{
-   \includegraphics[scale =0.45] {imagenes/6-neuronal/T2g.png}
-   \label{fig:T2g}
- }
+\begin{subfigure}[b]{0.4\textwidth}
+    \includegraphics[width=\textwidth] {imagenes/6-neuronal/e1g.png}
+    \caption{Joint error $e_1$}
+    \label{fig:e1g}
+\end{subfigure}
+\begin{subfigure}[b]{0.4\textwidth}
+    \includegraphics[width=\textwidth] {imagenes/6-neuronal/e2g.png}
+    \caption{Joint error $e_2$}
+    \label{fig:e2g}
+\end{subfigure}
+\begin{subfigure}[b]{0.4\textwidth}
+    \includegraphics[width=\textwidth] {imagenes/6-neuronal/T1g.png}
+    \caption{Torque input $\tau_1$}
+    \label{fig:T1g}
+\end{subfigure}
+\begin{subfigure}[b]{0.4\textwidth}
+    \includegraphics[width=\textwidth] {imagenes/6-neuronal/T2g.png}
+    \caption{Torque input $\tau_2$}
+    \label{fig:T2g}
+\end{subfigure}
+% \subfigure[Joint error $e_1$]{
+%    \includegraphics[scale =0.45] {imagenes/6-neuronal/e1g.png}
+%    \label{fig:e1g}
+%  }
+%  \subfigure[Joint error $e_2$]{
+%    \includegraphics[scale =0.45] {imagenes/6-neuronal/e2g.png}
+%    \label{fig:e2g}
+%  }
+%  \subfigure[Torque input $\tau_1$]{
+%    \includegraphics[scale =0.45] {imagenes/6-neuronal/T1g.png}
+%    \label{fig:T1g}
+%  }
+%  \subfigure[Torque input $\tau_2$]{
+%    \includegraphics[scale =0.45] {imagenes/6-neuronal/T2g.png}
+%    \label{fig:T2g}
+%  }
 \label{pdg}
 \caption{Error and Torque values PD+G}
 \end{figure*}
